@@ -4,17 +4,20 @@
 
 ### Шаги
 1. Склонировать проект 'git clone https://github.com/NKosteg/Diploma_ui_api_auto_test.git'
-2. Установить зависимости
-3. Запустить тесты командой 'python -m pytest'
-4. Сгенерировать отчет командой 'allure generate allure-files -o allure-report'
+2. Установить зависимости 'pip install -r requirements.txt'
+3. Запустить тесты 'python -m pytest'
+4. Сгенерировать отчет 'allure generate allure-files -o allure-report'
+5. Открыть отчет 'allure open allure-report'
 
 ### Стек:
  - pytest
  - selenium
+ - webdriver manager
  - requests
  - _sqlalchemy_
  - allure
- - config
+ - configparser
+ - json
 
 ### Структура:
  - ./test - тесты
@@ -29,10 +32,5 @@
 ### Полезные ссылки:
  - [Подсказка по markdown](https://www.markdownguide.org/basic-syntax/)
  - [Генератор файла .gitignore](https://www.toptal.com/developers/gitignore)
-
-### Библиотеки (!):
- - pip install pytest
- - pip install selenium
- - pip install webdriver-manager
- - pip install allure-pytest
- - pip install requests
+ - [Про configparser](https://docs.python.org/3/library/configparser.html)
+ - [Про pip freeze](https://pip.pypa.io/en/latest/cli/pip_freeze/#pip-freeze)
