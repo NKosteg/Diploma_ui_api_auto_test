@@ -7,11 +7,11 @@ from webdriver_manager.firefox import GeckoDriverManager
 
 from api.BoardApi import BoardApi
 from configuration.ConfigProvider import ConfigProvider
+from testdata.DataProvider import DataProvider
 
-project_id = "1c2066f3-5040-4275-b20c-f9fc6b9fb1b8"
+project_id = DataProvider().get("default_project_id")
 url = ConfigProvider().get("api", "api_base_url")
-token = ConfigProvider().get("api", "my_token")
-
+token = DataProvider().get_token()
 
 
 @pytest.fixture
@@ -30,6 +30,10 @@ def browser() -> WebDriver:
         yield browser
     with allure.step("Закрыть браузер"):
         browser.quit()
+
+@pytest.fixture
+def test_data():
+    return DataProvider()
 
 @pytest.fixture
 def api_client() -> BoardApi:

@@ -5,11 +5,11 @@ from page.MainPage import MainPage
 import pytest
 
 # @pytest.mark.skip
-def test_auth(browser):
-    my_company = "Potok_101"
-    my_name = 'Konstantin Nikolaev'
-    email = 'kosteg.n@yandex.ru'
-    password = 'GHV-mgn-in4-5GK'
+def test_auth(browser, test_data):
+    my_company = test_data.get("user_company")
+    my_name = test_data.get("user_name")
+    email = test_data.get("user_email")
+    password = test_data.get("user_pass")
 
     auth_page = AuthPage(browser)
     auth_page.go()

@@ -1,7 +1,8 @@
 from api.BoardApi import BoardApi
+from testdata.DataProvider import DataProvider
 import pytest
 
-project_id = "1c2066f3-5040-4275-b20c-f9fc6b9fb1b8"
+project_id = DataProvider().get("default_project_id")
 
 # @pytest.mark.skip
 def test_get_boards(api_client: BoardApi):
