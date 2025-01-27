@@ -1,6 +1,7 @@
 # Diploma_ui_api_auto_test
 
 ## Дипломная работа по автоматизации тестирования на Python.
+## [Тест план лежит здесь.](https://kosstegg-n.yonote.ru/share/2522f7b0-61db-40b3-a396-f5f263b29490)
 
 ### Шаги
 1. Склонировать проект 'git clone https://github.com/NKosteg/Diploma_ui_api_auto_test.git'

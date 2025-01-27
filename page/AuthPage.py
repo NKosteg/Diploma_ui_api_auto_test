@@ -8,6 +8,7 @@ from configuration.ConfigProvider import ConfigProvider
 
 
 class AuthPage:
+    """Клас предоставляет методы для работы со страницей авторизации приложения"""
 
     def __init__(self, driver: WebDriver) -> None:
         self.__url = ConfigProvider().get("ui", "ui_base_url")

@@ -5,6 +5,8 @@ from selenium.webdriver.remote.webelement import WebElement
 
 
 class MainPage:
+    """Клас предоставляет методы для работы со страницей профиля пользователя"""
+
     def __init__(self, driver: WebDriver) -> None:
         self.__driver = driver
 

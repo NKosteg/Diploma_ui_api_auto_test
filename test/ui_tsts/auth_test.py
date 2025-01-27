@@ -5,6 +5,8 @@ from page.MainPage import MainPage
 import pytest
 
 # @pytest.mark.skip
+@allure.suite("UI тест-кейсы")
+@allure.title("Тест на авторизацию с валидными данными")
 def test_auth(browser, test_data):
     my_company = test_data.get("user_company")
     my_name = test_data.get("user_name")
