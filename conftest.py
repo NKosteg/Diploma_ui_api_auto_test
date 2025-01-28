@@ -4,11 +4,14 @@ from selenium import webdriver
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from webdriver_manager.firefox import GeckoDriverManager
+from faker import Faker
+
 
 from api.BoardApi import BoardApi
 from configuration.ConfigProvider import ConfigProvider
 from testdata.DataProvider import DataProvider
 
+fake = Faker()
 project_id = DataProvider().get("default_project_id")
 url = ConfigProvider().get("api", "api_base_url")
 token = DataProvider().get_token()
@@ -46,14 +49,19 @@ def api_client_no_auth() -> BoardApi:
 @pytest.fixture
 def dummy_board_id() -> str:
     api = BoardApi(url, token)
-    resp = api.create_board('Board to be deleted', project_id).get('id')
+    resp = api.create_board(fake.country(), project_id).get('id')
+    return resp
+@pytest.fixture
+def dummy_update_board_id(create_and_delete_project) -> str:
+    api = BoardApi(url, token)
+    resp = api.create_board(fake.country(), create_and_delete_project).get('id')
     return resp
 
 @pytest.fixture
 def dummy_two_board_id(create_and_delete_project) -> str:
     api = BoardApi(url, token)
-    api.create_board('board to not be deleted', create_and_delete_project)
-    resp = api.create_board('Board to be deleted', create_and_delete_project).get('id')
+    api.create_board(fake.country(), create_and_delete_project)
+    resp = api.create_board(fake.country(), create_and_delete_project).get('id')
     return resp
 
 @pytest.fixture
@@ -65,7 +73,7 @@ def delete_board() -> str:
 @pytest.fixture
 def dummy_project_id() -> str:
     api = BoardApi(url, token)
-    resp = api.create_project('Project to be deleted').get('id')
+    resp = api.create_project(fake.company()).get('id')
     return resp
 
 @pytest.fixture
@@ -78,6 +86,6 @@ def delete_project() -> str:
 @pytest.fixture
 def create_and_delete_project():
     api = BoardApi(url, token)
-    resp = api.create_project('Project to to to to deleted').get('id')
+    resp = api.create_project(fake.company()).get('id')
     yield resp
     api.delete_project_by_id(resp)

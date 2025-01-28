@@ -17,6 +17,7 @@ class MainPage:
     @allure.step("Открыть страницу с профилем")
     def open_profile(self) -> None:
         self.__driver.find_element(By.XPATH, '//*[@id="loggedin-container"]/div[2]/div[1]/div[7]/div[1]').click()
+        self.__driver.execute_script("window.scrollBy(0, 400)")
 
     @allure.step("Получить имя пользователя")
     def account_name(self) -> str:

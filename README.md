@@ -35,3 +35,4 @@
  - [Генератор файла .gitignore](https://www.toptal.com/developers/gitignore)
  - [Про configparser](https://docs.python.org/3/library/configparser.html)
  - [Про pip freeze](https://pip.pypa.io/en/latest/cli/pip_freeze/#pip-freeze)
+ - [Про генератор случайных названий](https://faker.readthedocs.io/en/stable/)

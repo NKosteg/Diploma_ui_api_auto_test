@@ -4,5 +4,9 @@
   "user_name": "Konstantin Nikolaev",
   "user_email": "kosteg.n@yandex.ru",
   "user_pass": "GHV-mgn-in4-5GK",
-  "default_project_id": "1c2066f3-5040-4275-b20c-f9fc6b9fb1b8"
+  "default_project_id": "1c2066f3-5040-4275-b20c-f9fc6b9fb1b8",
+  "user_project": "New Kosta project",
+  "user_board": "Test Kosta board",
+  "user_update_project": "Update Kosta project",
+  "user_update_board": "Update Kosta board"
 }
