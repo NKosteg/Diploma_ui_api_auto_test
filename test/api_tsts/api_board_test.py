@@ -1,11 +1,10 @@
 from api.BoardApi import BoardApi
 from testdata.DataProvider import DataProvider
-import pytest
 import allure
 
 project_id = DataProvider().get("default_project_id")
 
-# @pytest.mark.skip
+
 @allure.suite("Api тест-кейсы")
 @allure.feature("READ")
 @allure.title("Получение списка досок из проекта по умолчанию")
@@ -17,20 +16,19 @@ def test_get_boards_default_project(api_client: BoardApi):
     assert board_list[1]['title'] == "Сайт для зоомагазина"
 
 
-# @pytest.mark.skip
 @allure.suite("Api тест-кейсы")
 @allure.feature("CREATE")
 @allure.title("Создать новую доску на проекте по умолчанию")
 @allure.description("Использование в тестах id проекта по умолчанию, после  создания и регистрации компании в сервисе Yougile")
 def test_create_board(api_client: BoardApi, test_data: dict, delete_board: dict):
     board_list_before = api_client.get_all_boards_by_org_id(project_id)
-    resp =api_client.create_board(test_data.get("user_board"), project_id)
+    resp = api_client.create_board(test_data.get("user_board"), project_id)
     delete_board['board_id'] = resp.get("id")
     board_list_after = api_client.get_all_boards_by_org_id(project_id)
     assert len(board_list_after) - len(board_list_before) == 1
     assert any(element["title"] == test_data.get("user_board") for element in board_list_after)
 
-# @pytest.mark.skip
+
 @allure.suite("Api тест-кейсы")
 @allure.feature("DELETE")
 @allure.title("Удалить доску с проекта по умолчанию")
@@ -41,7 +39,7 @@ def test_delete_board(api_client: BoardApi, dummy_board_id: str):
     board_list_after = api_client.get_all_boards_by_org_id(project_id)
     assert len(board_list_before) - len(board_list_after) == 1
 
-# @pytest.mark.skip
+
 @allure.suite("Api тест-кейсы")
 @allure.feature("CREATE")
 @allure.title("Создать новую доску на новом проекте")
@@ -53,7 +51,7 @@ def test_create_board_new_project(api_client: BoardApi, test_data: dict, create_
     assert len(board_list_after) - len(board_list_before) == 1
     assert any(element["title"] == "Test Kosta board" for element in board_list_after)
 
-# @pytest.mark.skip
+
 @allure.suite("Api тест-кейсы")
 @allure.feature("UPDATE")
 @allure.title("Редактирование доски на новом проекте")
@@ -64,9 +62,6 @@ def test_update_board_new_project(api_client: BoardApi, test_data: dict, create_
     assert body.get("title") == test_data.get("user_update_board")
 
 
-
-
-# @pytest.mark.skip
 @allure.suite("Api тест-кейсы")
 @allure.feature("DELETE")
 @allure.title("Удалить доску с нового проекта ")

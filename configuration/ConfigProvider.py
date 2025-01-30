@@ -3,6 +3,7 @@ import configparser
 global_config = configparser.ConfigParser()
 global_config.read('test_config.ini')
 
+
 class ConfigProvider:
 
     def __init__(self) -> None:

@@ -8,5 +8,8 @@
   "user_project": "New Kosta project",
   "user_board": "Test Kosta board",
   "user_update_project": "Update Kosta project",
-  "user_update_board": "Update Kosta board"
+  "user_update_board": "Update Kosta board",
+  "user":  {
+                "a3dc935a-47b4-4fa6-8aa3-3428dd2e7608": "admin"
+            }
 }

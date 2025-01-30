@@ -2,12 +2,10 @@ import allure
 from page.AuthPage import AuthPage
 from page.MainPage import MainPage
 
-import pytest
 
-# @pytest.mark.skip
 @allure.suite("UI тест-кейсы")
 @allure.title("Тест на авторизацию с валидными данными")
-def test_auth(browser, test_data):
+def test_auth(browser, test_data: dict):
     my_company = test_data.get("user_company")
     my_name = test_data.get("user_name")
     email = test_data.get("user_email")

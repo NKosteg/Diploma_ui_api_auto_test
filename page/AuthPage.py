@@ -3,7 +3,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
 from configuration.ConfigProvider import ConfigProvider
 
 
@@ -11,7 +10,7 @@ class AuthPage:
     """Клас предоставляет методы для работы со страницей авторизации приложения"""
 
     def __init__(self, driver: WebDriver) -> None:
-        self.__url = ConfigProvider().get("ui", "ui_base_url")
+        self.__url = ConfigProvider().get("ui", "ui_auth_url")
         self.__driver = driver
 
     @allure.step("Перейти на страницу авторизации")
@@ -38,3 +37,9 @@ class AuthPage:
     def current_company(self) -> str:
         element = self.__driver.find_element(By.CSS_SELECTOR, ".mr-6.whitespace-nowrap.h1-semibold").text
         return element
+
+    @allure.step("Открыть страницу с проектом")
+    def open_project(self, name: str):
+        locator = f"'div[title=\"{name}\"]'"
+        print(locator)
+        self.__driver.find_element(By.CSS_SELECTOR, 'div[title="Clark and Sons"]').click()
